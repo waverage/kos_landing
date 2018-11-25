@@ -1,3 +1,4 @@
+// @author Volodymyr Tsumanchuk (https://github.com/waverage)
 declare global PROJECT_PATH to "0:/my_land/".
 
 runoncepath(PROJECT_PATH + "lib.ks").
