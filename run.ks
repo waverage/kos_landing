@@ -1,15 +1,15 @@
 // @author Volodymyr Tsumanchuk (https://github.com/waverage)
-declare global PROJECT_PATH to "0:/my_land/".
+declare global PROJECT_PATH to "0:/kos_landing/".
 
 runoncepath(PROJECT_PATH + "lib.ks").
 runoncepath(PROJECT_PATH + "logger.ks").
 
 local runLand to false.
 local exit to false.
-// Create a GUI window
+
 LOCAL gui IS GUI(200).
 set gui:x to 20.
-// Add widgets to the GUI
+
 LOCAL label IS gui:ADDLABEL("Landing Guidaince").
 SET label:STYLE:ALIGN TO "CENTER".
 SET label:STYLE:HSTRETCH TO True. // Fill horizontally
@@ -35,7 +35,6 @@ function closeBtnHandler {
 	set exit to true.
 }
 
-// Show the GUI.
 gui:SHOW().
 
 SET closeBtn:ONCLICK TO closeBtnHandler@.
