@@ -1,9 +1,20 @@
 # KOS landing script
-Putting rockets into the sky, then turning around and landing them again! Using the kOS mod for Kerbal Space Program. 
+Putting rockets into the sky, then turning around and landing them again! Using the kOS mod for Kerbal Space Program.
 
 The scripts are written in the Kerboscript language, which is described
 on the [main documenation page for kOS](http://ksp-kos.github.io/KOS_DOC/).
 
+## Setup guide
+
+1. Clone this repository to the `Script` folder.
+2. Copy the `boot/boot_kos_landing.ks` to your `Script/boot` folder.
+3. Select boot file in VAB.
+	![Select boot file](/images/boot_file.png)
+
+4. In a flight press the `Land` button.
+	![Press Land button](/images/landing_gui.png)
+
+5. Profit...
 
 ## Licensing:
 
