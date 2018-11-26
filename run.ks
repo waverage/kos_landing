@@ -7,12 +7,12 @@ runoncepath(PROJECT_PATH + "logger.ks").
 local runLand to false.
 local exit to false.
 
-LOCAL gui IS GUI(200).
+local gui is GUI(200).
 set gui:x to 20.
 
-LOCAL label IS gui:ADDLABEL("Landing Guidaince").
-SET label:STYLE:ALIGN TO "CENTER".
-SET label:STYLE:HSTRETCH TO True. // Fill horizontally
+local label is gui:addlabel("Landing Guidaince").
+set label:style:align to "CENTER".
+set label:style:hstretch to true. // Fill horizontally
 
 global stopDistanceLabelBaseText is "Stop distance: ". 
 global stopDistanceLabel is gui:addlabel(stopDistanceLabelBaseText + "0").
@@ -22,8 +22,11 @@ global impactTimeLabelBaseText is "Impact time: ".
 global impactTimeLabel is gui:addlabel(impactTimeLabelBaseText + "0").
 impactTimeLabel:hide().
 
-LOCAL landBtn TO gui:ADDBUTTON("Land").
-LOCAL closeBtn TO gui:ADDBUTTON("Close").
+local landBtn to gui:addbutton("Land").
+local closeBtn to gui:addbutton("Close").
+
+global radarOffset to alt:radar.
+log_write("Radar offset: " + radarOffset).
 
 function landBtnHandler {
 	stopDistanceLabel:show().
@@ -35,15 +38,19 @@ function closeBtnHandler {
 	set exit to true.
 }
 
-gui:SHOW().
+gui:show().
 
-SET closeBtn:ONCLICK TO closeBtnHandler@.
-SET landBtn:ONCLICK TO landBtnHandler@.
+set closeBtn:onclick to closeBtnHandler@.
+set landBtn:onclick to landBtnHandler@.
 
-wait until runLand or exit.
-
-if not exit {
-	runpath(normalize_path("land.ks")).
+until false {
+	wait until runLand or exit.
+	if not exit {
+		runpath(normalize_path("land.ks")).
+		set runLand to false.
+	} else {
+		break.
+	}
 }
 
 gui:dispose().
